@@ -1,10 +1,10 @@
-import Image from "next/image"; // Importing Image component for optimized images
-import Link from "next/link"; // Importing Link component for navigation
+import Image from "next/image"; 
+import Link from "next/link"; 
 
 const About = () => {
   return (
     <div className="container mx-auto p-6 max-w-3xl">
-      {/* Go to Home Button */}
+     
       <div className="mb-4">
         <Link href="/" className="text-blue-600 font-semibold text-lg flex items-center hover:text-blue-800">
           <svg
@@ -25,10 +25,10 @@ const About = () => {
         </Link>
       </div>
 
-      {/* Page Content */}
+      
       <h1 className="text-3xl font-bold text-center text-blue-800 mb-6">About ShopIQ</h1>
 
-      {/* Image Section */}
+      
       <div className="text-center mb-6">
         <Image
           src="/images/ecom.jpg"
@@ -39,7 +39,7 @@ const About = () => {
         />
       </div>
 
-      {/* Description Section */}
+     
       <div className="text-lg text-gray-800 space-y-5">
         <p>
           ShopIQ is a cutting-edge eCommerce platform designed to provide an exceptional shopping experience. We offer a wide range of products across various categories, ensuring our customers can find exactly what they are looking for. With a user-friendly interface and secure checkout process, we make shopping online a breeze.
@@ -59,7 +59,7 @@ const About = () => {
         </ul>
       </div>
 
-      {/* Footer Section */}
+    
       <div className="mt-6 text-center">
         <p className="text-lg text-gray-600">Thank you for choosing ShopIQ. Happy shopping!</p>
       </div>

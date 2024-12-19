@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import ProductListing from '@/components/ProductListing';  // Import ProductListing component
+import ProductListing from '@/components/ProductListing'; 
 
 export default function Home() {
   return (
@@ -13,10 +13,10 @@ export default function Home() {
       <main>
         <HeroSection />
         
-        {/* Product Listing Section */}
+      
         <section className="product-listing-section py-12 px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Our Products</h2>
-          <ProductListing /> {/* Add ProductListing here */}
+          <ProductListing />
         </section>
       </main>
     </>

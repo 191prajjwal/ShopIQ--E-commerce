@@ -1,8 +1,8 @@
-import { useCart } from "@/context/CartContext"; // Importing useCart hook from context
-import { useRouter } from "next/router"; // Importing useRouter hook for routing
+import { useCart } from "@/context/CartContext"; 
+import { useRouter } from "next/router"; 
 
 const Checkout = () => {
-  const { cartItems } = useCart(); // Destructure cartItems from useCart
+  const { cartItems } = useCart(); 
   const router = useRouter();
 
   const calculateTotalPrice = () => {
@@ -10,13 +10,12 @@ const Checkout = () => {
   };
 
   const handleCheckout = () => {
-    // Simulate order placement logic here (e.g., calling an API or processing the cart)
-    // After successfully placing the order, redirect to order success page
+ 
     router.push("/order-success");
   };
 
   const handleGoHome = () => {
-    // Redirect to the homepage
+   
     router.push("/");
   };
 
@@ -58,7 +57,7 @@ const Checkout = () => {
             </button>
           </div>
 
-          {/* Go to Home Button */}
+         
           <div className="mt-4 text-center">
             <button
               onClick={handleGoHome}

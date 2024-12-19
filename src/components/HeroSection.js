@@ -18,7 +18,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (swiperRef.current) {
-        swiperRef.current.swiper.slideNext(); // Automatically go to the next slide
+        swiperRef.current.swiper.slideNext(); 
       }
     }, 3000); 
 
@@ -40,7 +40,7 @@ const HeroSection = () => {
   return (
     <div className="hero-section relative w-full overflow-hidden border-4 border-blue-500 rounded-lg bg-gradient-to-r from-teal-400 to-blue-500">
       
-      {/* Left Arrow */}
+   
       <div
         className="absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer opacity-70 hover:opacity-100 z-10 flex justify-center items-center w-12 h-12 bg-white text-black rounded-full border-4 border-black text-3xl"
         onClick={goToPrevSlide}
@@ -48,7 +48,7 @@ const HeroSection = () => {
         <span>&lt;</span>
       </div>
 
-      {/* Right Arrow */}
+     
       <div
         className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer opacity-70 hover:opacity-100 z-10 flex justify-center items-center w-12 h-12 bg-white text-black rounded-full border-4 border-black text-3xl"
         onClick={goToNextSlide}
@@ -56,7 +56,7 @@ const HeroSection = () => {
         <span>&gt;</span>
       </div>
 
-      {/* Swiper for Hero Section */}
+     
       <Swiper
         spaceBetween={5}
         slidesPerView={1}

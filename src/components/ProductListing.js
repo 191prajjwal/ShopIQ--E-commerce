@@ -17,7 +17,6 @@ const ProductListing = () => {
     try {
       const data = await fetchProducts(12, pageNum * 12);
       if (data.length > 0) {
-        // Prevent duplicating products
         setProducts((prevProducts) => {
           const newProducts = data.filter(
             (newProduct) => !prevProducts.some((existingProduct) => existingProduct.id === newProduct.id)
@@ -66,7 +65,7 @@ const ProductListing = () => {
   }
 
   return (
-    <div className="product-listing grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="product-listing grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

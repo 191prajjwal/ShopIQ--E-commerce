@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useCart } from '@/context/CartContext'; // Import the cart context
-import { fetchProductById } from '../../utils/fetchProducts'; // Assuming this is the fetch function
+import { useCart } from '@/context/CartContext'; 
+import { fetchProductById } from '../../utils/fetchProducts'; 
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -66,10 +66,10 @@ const ProductDetails = () => {
     );
   }
 
-  // Check if the product is already in the cart
+ 
   const isInCart = cartItems.some(item => item.id === product.id);
 
-  // Toggle add/remove functionality
+
   const toggleCart = () => {
     if (isInCart) {
       removeFromCart(product.id);
@@ -79,7 +79,7 @@ const ProductDetails = () => {
     setAddedToCart(!addedToCart);
   };
 
-  // Navigate to the Cart page
+ 
   const goToCart = () => {
     router.push('/cart');
   };
@@ -87,7 +87,7 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-wrap lg:flex-nowrap justify-between">
-        {/* Left Column: Product Image */}
+        
         <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
           <img
             src={product.images[0]}
@@ -96,13 +96,13 @@ const ProductDetails = () => {
           />
         </div>
 
-        {/* Right Column: Product Info */}
+       
         <div className="w-full lg:w-2/3 pl-4 flex flex-col justify-between">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">{product.title}</h1>
           <p className="text-lg text-gray-700 mb-4">{product.description}</p>
           <p className="text-xl font-semibold text-gray-900 mb-4">${product.price}</p>
 
-          {/* Reviews Section */}
+         
           <div className="flex items-center mb-4">
             {[...Array(5)].map((_, index) => (
               <svg
@@ -123,14 +123,14 @@ const ProductDetails = () => {
             <span className="ml-2 text-gray-500">({product.rating})</span>
           </div>
 
-          {/* Additional Product Details */}
+        
           <p className="text-sm text-gray-500 mb-4">Availability: {product.availabilityStatus}</p>
           <p className="text-sm text-gray-500 mb-4">Brand: {product.brand}</p>
           <p className="text-sm text-gray-500 mb-4">Category: {product.category}</p>
           <p className="text-sm text-gray-500 mb-4">Minimum Order: {product.minimumOrderQuantity}</p>
           <p className="text-sm text-gray-500 mb-4">Return Policy: {product.returnPolicy}</p>
 
-          {/* Add to Cart / Remove from Cart Button */}
+         
           <div className="mb-4">
             {!isInCart ? (
               <button
@@ -149,7 +149,7 @@ const ProductDetails = () => {
             )}
           </div>
 
-          {/* Go to Cart Button */}
+        
           {isInCart && (
             <button
               onClick={goToCart}
@@ -159,7 +159,7 @@ const ProductDetails = () => {
             </button>
           )}
 
-          {/* Go to Home Button */}
+        
           <button
             onClick={() => router.push('/')}
             className="px-6 py-3 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition"
@@ -168,7 +168,7 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
-        {/* Reviews Section */}
+     
         <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
         <div className="space-y-4">

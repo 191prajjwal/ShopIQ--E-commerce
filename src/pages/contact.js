@@ -6,8 +6,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false); // New state for form submission
-  const [isSending, setIsSending] = useState(false); // State for handling form submission in progress
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+  const [isSending, setIsSending] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,13 +19,13 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSending(true); // Set sending state to true
+    setIsSending(true); 
     setTimeout(() => {
-      // Simulating the form submission
+      
       console.log("Form submitted:", formData);
       setIsSending(false);
       setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" }); // Reset form data after submission
+      setFormData({ name: "", email: "", message: "" }); 
     }, 1500);
   };
 
@@ -33,7 +33,7 @@ const Contact = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
 
-      {/* Message Sent Confirmation */}
+     
       {isSubmitted && !isSending && (
         <div className="max-w-md mx-auto bg-green-100 p-6 mb-6 rounded-lg shadow-md">
           <div className="flex items-center text-green-800">
@@ -56,7 +56,7 @@ const Contact = () => {
         </div>
       )}
 
-      {/* Contact Form */}
+     
       {!isSubmitted && (
         <div className="max-w-md mx-auto bg-white p-6 shadow-md rounded-lg">
           <form onSubmit={handleSubmit}>

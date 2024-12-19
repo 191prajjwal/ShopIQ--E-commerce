@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
+import { useRouter } from 'next/router';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -7,8 +8,8 @@ const Categories = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { cartItems, addToCart, removeFromCart } = useCart();
+  const router = useRouter();
 
-  // Fetch categories from the API
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -28,14 +29,12 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  // Handle category selection change
   const handleCategoryChange = (e) => {
     const category = e.target.value;
     setSelectedCategory(category);
     fetchProductsByCategory(category);
   };
 
-  // Fetch products for the selected category
   const fetchProductsByCategory = async (category) => {
     setLoading(true);
     try {
@@ -54,14 +53,16 @@ const Categories = () => {
     }
   };
 
-  // Check if a product is in the cart
   const isInCart = (productId) => cartItems.some((item) => item.id === productId);
+
+  const viewDetails = (id) => {
+    router.push(`/product-details/${id}`);
+  };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-8">Categories</h1>
 
-      {/* Dropdown for selecting categories */}
       <div className="max-w-md mx-auto mb-8">
         <select
           id="categories"
@@ -82,13 +83,18 @@ const Categories = () => {
         </select>
       </div>
 
-      {/* Show loading spinner or products */}
+      {!selectedCategory && !loading && (
+        <div className="text-center mb-8">
+          <p className="text-lg text-gray-500">Select a category to view products</p>
+        </div>
+      )}
+
       {loading ? (
         <div className="text-center">
           <p className="text-lg text-gray-500">Loading products...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {products.map((product) => (
             <div
               key={product.id}
@@ -97,9 +103,9 @@ const Categories = () => {
               <img
                 src={product.thumbnail}
                 alt={product.title}
-                className="w-full h-48 object-contain rounded-md mb-4"
+                className="w-full h-40 object-contain rounded-md mb-4"
               />
-              <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+              <h2 className="text-sm font-semibold mb-2">{product.title}</h2>
               <p className="text-gray-700 mb-2">
                 {product.description.length > 50
                   ? `${product.description.slice(0, 50)}...`
@@ -107,28 +113,54 @@ const Categories = () => {
               </p>
               <p className="text-blue-600 font-bold mb-4">${product.price}</p>
 
-              {/* Add to Cart / Remove from Cart Button */}
-              {isInCart(product.id) ? (
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, index) => (
+                  <svg
+                    key={index}
+                    className={`w-5 h-5 ${index < Math.floor(product.rating) ? 'text-yellow-500' : 'text-gray-300'}`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 17.09l4.19 2.21-1.11-4.78L20 9.47h-5.19L12 4.5l-2.81 4.97H4l3.92 4.05-1.11 4.78L12 17.09z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ))}
+              </div>
+
+              <div className="flex justify-between">
+                {isInCart(product.id) ? (
+                  <button
+                    onClick={() => removeFromCart(product.id)}
+                    className="py-2 px-4 bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-colors"
+                  >
+                    Remove from Cart
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors"
+                  >
+                    Add to Cart
+                  </button>
+                )}
+
                 <button
-                  onClick={() => removeFromCart(product.id)}
-                  className="w-full py-2 px-4 bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-colors"
+                  onClick={() => viewDetails(product.id)}
+                  className="py-2 px-4 bg-green-500 text-gray-700 font-semibold rounded-md hover:bg-green-600 transition-colors ml-[1px]"
                 >
-                  Remove from Cart
+                  View Details
                 </button>
-              ) : (
-                <button
-                  onClick={() => addToCart(product)}
-                  className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors"
-                >
-                  Add to Cart
-                </button>
-              )}
+              </div>
             </div>
           ))}
         </div>
       )}
 
-      {/* Display a message if no products are found */}
       {!loading && selectedCategory && products.length === 0 && (
         <div className="text-center mt-8">
           <p className="text-lg text-gray-500">No products found in this category.</p>

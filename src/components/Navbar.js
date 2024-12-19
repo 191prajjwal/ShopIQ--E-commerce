@@ -2,12 +2,12 @@ import Link from 'next/link';
 import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { CartContext } from "../context/CartContext";
-import { FaShoppingCart } from 'react-icons/fa'; // Import cart icon from react-icons
+import { FaShoppingCart } from 'react-icons/fa'; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { cartItems } = useContext(CartContext); // Access cart items from context
-  const router = useRouter(); // Access the current route
+  const { cartItems } = useContext(CartContext); 
+  const router = useRouter(); 
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -21,14 +21,14 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
+    
         <div className="text-2xl font-bold">
           <Link href="/" className="text-blue-600">
             ShopIQ
           </Link>
         </div>
 
-        {/* Hamburger Icon (Mobile View) */}
+       
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
@@ -51,7 +51,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Desktop Menu */}
+      
         <ul className="hidden md:flex space-x-6 items-center">
           <li>
             <Link href="/" className={getLinkClass('/')}>
@@ -73,7 +73,7 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          {/* Cart Icon with Tooltip */}
+        
           <li className="relative group">
             <Link href="/cart" className="flex items-center hover:text-blue-600">
               <FaShoppingCart className="text-xl" />
@@ -89,7 +89,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Mobile Menu */}
+       
         <ul
           className={`${
             menuOpen ? 'block' : 'hidden'
