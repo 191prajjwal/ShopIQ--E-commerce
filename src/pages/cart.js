@@ -16,7 +16,7 @@ const Cart = () => {
   const handleIncrement = (id) => {
     const item = cartItems.find((item) => item.id === id);
     if (item) {
-      const newQuantity = (item.quantity || 0) + 1;
+      const newQuantity = (item.quantity || 1) + 1;
       updateCartItem(id, newQuantity);
     }
   };
@@ -36,7 +36,7 @@ const Cart = () => {
     return cartItems
       .reduce((total, item) => {
         const price = parseFloat(item.price) || 0;
-        const quantity = parseInt(item.quantity, 10) || 0;
+        const quantity = Math.max(item.quantity || 1, 1); // Default to 1 if quantity is not set or invalid
         return total + price * quantity;
       }, 0)
       .toFixed(2);
