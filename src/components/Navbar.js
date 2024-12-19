@@ -1,15 +1,22 @@
 import Link from 'next/link';
 import { useState, useContext } from 'react';
+import { useRouter } from 'next/router';
 import { CartContext } from "../context/CartContext";
 import { FaShoppingCart } from 'react-icons/fa'; // Import cart icon from react-icons
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cartItems } = useContext(CartContext); // Access cart items from context
+  const router = useRouter(); // Access the current route
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const getLinkClass = (path) =>
+    router.pathname === path
+      ? 'bg-gradient-to-r from-blue-500 to-green-500 text-white px-3 py-2 rounded-lg shadow-md'
+      : 'hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg';
 
   return (
     <nav className="bg-white shadow-md p-4 sticky top-0 z-50">
@@ -45,28 +52,28 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 text-gray-700">
+        <ul className="hidden md:flex space-x-6 items-center">
           <li>
-            <Link href="/" className="hover:text-blue-600">
+            <Link href="/" className={getLinkClass('/')}>
               Home
             </Link>
           </li>
           <li>
-            <Link href="/categories" className="hover:text-blue-600">
+            <Link href="/categories" className={getLinkClass('/categories')}>
               Categories
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-blue-600">
+            <Link href="/about" className={getLinkClass('/about')}>
               About
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="hover:text-blue-600">
+            <Link href="/contact" className={getLinkClass('/contact')}>
               Contact
             </Link>
           </li>
-          {/* Cart Icon with Hover Tooltip */}
+          {/* Cart Icon with Tooltip */}
           <li className="relative group">
             <Link href="/cart" className="flex items-center hover:text-blue-600">
               <FaShoppingCart className="text-xl" />
@@ -91,7 +98,7 @@ const Navbar = () => {
           <li className="border-b">
             <Link
               href="/"
-              className="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+              className={getLinkClass('/')}
               onClick={() => setMenuOpen(false)}
             >
               Home
@@ -100,7 +107,7 @@ const Navbar = () => {
           <li className="border-b">
             <Link
               href="/categories"
-              className="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+              className={getLinkClass('/categories')}
               onClick={() => setMenuOpen(false)}
             >
               Categories
@@ -109,7 +116,7 @@ const Navbar = () => {
           <li className="border-b">
             <Link
               href="/about"
-              className="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+              className={getLinkClass('/about')}
               onClick={() => setMenuOpen(false)}
             >
               About
@@ -118,17 +125,16 @@ const Navbar = () => {
           <li>
             <Link
               href="/contact"
-              className="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+              className={getLinkClass('/contact')}
               onClick={() => setMenuOpen(false)}
             >
               Contact
             </Link>
           </li>
-          {/* Cart Link */}
           <li className="border-b">
             <Link
               href="/cart"
-              className="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+              className={getLinkClass('/cart')}
               onClick={() => setMenuOpen(false)}
             >
               Cart ({cartItems.length})
