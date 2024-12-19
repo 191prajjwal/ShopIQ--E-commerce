@@ -85,7 +85,7 @@ const Cart = () => {
                     -
                   </button>
                   <span className="text-gray-900 font-semibold text-md sm:text-base">
-                    {item.quantity || 0}x
+                    {Math.max(item.quantity || 1, 1)}x
                   </span>
                   <button
                     onClick={() => handleIncrement(item.id)}
