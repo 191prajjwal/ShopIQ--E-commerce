@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
     <div className="product-card p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
       <div className="image-container mb-4">
         <img
-          src={product.thumbnail}
+          src={product.images[0]}
           alt={product.title}
           className="w-full h-60 object-cover rounded-lg"
         />
