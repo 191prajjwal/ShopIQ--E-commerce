@@ -78,7 +78,7 @@ To run the project locally, follow the steps below:
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ecommerce-website.git
+git clone https://github.com/191prajjwal/ShopIQ--E-commerce.git
 cd ecommerce-website.
 ```
 
@@ -123,7 +123,7 @@ Copy code
 
 Watch the demo video of the project below:
 
-[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://drive.google.com/file/d/1Mj6C-GbpdiPasbs63kQvN2D8bDtYi0g_/view?usp=sharing)
 
 
 
