@@ -6,6 +6,13 @@ The objective of this project is to develop a fully functional and mobile-optimi
 ## Framework
 - **Next.js** 
 
+## Deployment
+
+The live project is deployed on Vercel. Check it out here:
+
+[Live Demo](https://shop-iq-e-commerce.vercel.app/)
+
+
 ## Features & Functionality
 
 ### 1. **Navbar**
@@ -111,3 +118,21 @@ Copy code
 * Tailwind CSS for responsive and utility-first styling
 * React Context API for managing application state (e.g., cart items)
 * DummyJSON API for fetching product data
+
+## Demo Video
+
+Watch the demo video of the project below:
+
+[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+
+
+
+## **Conclusion**
+
+This project demonstrates the ability to build a fully responsive e-commerce website using Next.js, with features like server-side rendering, dynamic product loading, and API integration. The application is designed to be both desktop and mobile-friendly, ensuring a smooth and scalable user experience.
+
+
+## **License**
+
+This project is licensed under the MIT License.
